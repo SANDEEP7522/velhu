@@ -3,23 +3,83 @@
 import { useState } from "react";
 import { ContactIcons, budgetOptions, siteMeta } from "@/cotents";
 
+const EMPTY_FORM = {
+    name: "",
+    email: "",
+    company: "",
+    budget: "",
+    message: "",
+};
+
 export default function Contact() {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        company: "",
-        budget: "",
-        message: "",
-    });
+    const [formData, setFormData] = useState(EMPTY_FORM);
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState({ type: "", text: "" });
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert("Thank you! We'll get back to you within 24 hours.");
-        setFormData({ name: "", email: "", company: "", budget: "", message: "" });
+
+        const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+        if (!accessKey) {
+            setStatus({
+                type: "danger",
+                text: "Form is not configured. Please email us instead.",
+            });
+            return;
+        }
+
+        setLoading(true);
+        setStatus({ type: "", text: "" });
+
+        const budgetLabel =
+            budgetOptions.find((o) => o.value === formData.budget)?.label || "";
+
+        const payload = {
+            access_key: accessKey,
+            subject: `New project inquiry from ${formData.name} — ${siteMeta.brand}`,
+            from_name: `${siteMeta.brand} Website`,
+            name: formData.name,
+            email: formData.email,
+            company: formData.company,
+            budget: budgetLabel,
+            message: formData.message,
+            botcheck: "",
+        };
+
+        try {
+            const res = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify(payload),
+            }).then((r) => r.json());
+
+            if (res.success) {
+                setStatus({
+                    type: "success",
+                    text: "Thank you! We'll get back to you within 24 hours.",
+                });
+                setFormData(EMPTY_FORM);
+            } else {
+                setStatus({
+                    type: "danger",
+                    text: res.message || "Something went wrong. Please try again.",
+                });
+            }
+        } catch {
+            setStatus({
+                type: "danger",
+                text: "Network error. Please check your connection and try again.",
+            });
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -76,30 +136,11 @@ export default function Contact() {
                             </div>
                         </div>
 
-                        <div className="mt-6 sm:mt-8">
-                            <div className="rounded-2xl overflow-hidden border border-slate-200 h-40 sm:h-48 md:h-56 relative group card-shadow">
-                                <iframe
-                                    src="https://www.google.com/maps?q=IT+Hub,+Sector+62,+Noida,+Uttar+Pradesh,+India&output=embed"
-                                    width="100%"
-                                    height="100%"
-                                    style={{ border: 0 }}
-                                    allowFullScreen
-                                    loading="lazy"
-                                    referrerPolicy="no-referrer-when-downgrade"
-                                    title="Our Location"
-                                    className="grayscale-30 group-hover:grayscale-0 transition-[filter] duration-500"
-                                />
-                                <div className="absolute inset-0 bg-linear-to-t from-surface/50 to-transparent pointer-events-none" />
-                            </div>
-                            <p className="text-xs text-center text-slate-500 mt-3">
-                                {siteMeta.locationTag}
-                            </p>
-                        </div>
                     </div>
 
-                    <div className="p-5 sm:p-6 md:p-8 rounded-2xl bg-white border border-slate-200 card-shadow-lg">
-                        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                    <div className="p-5 sm:p-6 md:p-7 rounded-2xl bg-white border border-slate-200 card-shadow-lg">
+                        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                 <div>
                                     <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
                                         Your Name
@@ -112,7 +153,7 @@ export default function Contact() {
                                         onChange={handleChange}
                                         required
                                         placeholder="John Doe"
-                                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/40 focus:bg-white focus:ring-2 focus:ring-primary/15 transition-all duration-300 min-h-11"
+                                        className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/40 focus:bg-white focus:ring-2 focus:ring-primary/15 transition-all duration-300 min-h-11"
                                     />
                                 </div>
                                 <div>
@@ -127,12 +168,12 @@ export default function Contact() {
                                         onChange={handleChange}
                                         required
                                         placeholder="john@company.com"
-                                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/40 focus:bg-white focus:ring-2 focus:ring-primary/15 transition-all duration-300 min-h-11"
+                                        className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/40 focus:bg-white focus:ring-2 focus:ring-primary/15 transition-all duration-300 min-h-11"
                                     />
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                 <div>
                                     <label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-2">
                                         Company
@@ -144,7 +185,7 @@ export default function Contact() {
                                         value={formData.company}
                                         onChange={handleChange}
                                         placeholder="Your Company"
-                                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/40 focus:bg-white focus:ring-2 focus:ring-primary/15 transition-all duration-300 min-h-11"
+                                        className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/40 focus:bg-white focus:ring-2 focus:ring-primary/15 transition-all duration-300 min-h-11"
                                     />
                                 </div>
                                 <div>
@@ -178,23 +219,59 @@ export default function Contact() {
                                     value={formData.message}
                                     onChange={handleChange}
                                     required
-                                    rows={5}
+                                    rows={3}
                                     placeholder="Tell us about your project, goals, and timeline..."
-                                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/40 focus:bg-white focus:ring-2 focus:ring-primary/15 transition-all duration-300 resize-none"
+                                    className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-primary/40 focus:bg-white focus:ring-2 focus:ring-primary/15 transition-all duration-300 resize-none"
                                 />
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full py-3.5 sm:py-4 rounded-xl bg-linear-to-r from-primary to-accent text-white font-semibold text-sm hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 hover:scale-[1.02] min-h-11"
+                                disabled={loading}
+                                className="w-full py-3 sm:py-3.5 rounded-xl bg-linear-to-r from-primary to-accent text-white font-semibold text-sm hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 min-h-11"
                             >
-                                Send Message
+                                {loading ? "Sending..." : "Send Message"}
                             </button>
-                            <p className="text-xs text-center text-slate-500">
-                                We&apos;ll get back to you within 24 hours
-                            </p>
+
+                            {status.text ? (
+                                <p
+                                    role={status.type === "danger" ? "alert" : "status"}
+                                    aria-live="polite"
+                                    className={`text-xs text-center font-medium ${
+                                        status.type === "success"
+                                            ? "text-emerald-600"
+                                            : "text-rose-600"
+                                    }`}
+                                >
+                                    {status.text}
+                                </p>
+                            ) : (
+                                <p className="text-xs text-center text-slate-500">
+                                    We&apos;ll get back to you within 24 hours
+                                </p>
+                            )}
                         </form>
                     </div>
+                </div>
+
+                <div className="mt-10 sm:mt-12 md:mt-16">
+                    <div className="rounded-2xl overflow-hidden border border-slate-200 h-56 sm:h-72 md:h-80 lg:h-96 relative group card-shadow">
+                        <iframe
+                            src="https://www.google.com/maps?q=IT+Hub,+Sector+62,+Noida,+Uttar+Pradesh,+India&output=embed"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="Our Location"
+                            className="grayscale-30 group-hover:grayscale-0 transition-[filter] duration-500"
+                        />
+                        <div className="absolute inset-0 bg-linear-to-t from-surface/30 to-transparent pointer-events-none" />
+                    </div>
+                    <p className="text-xs text-center text-slate-500 mt-3">
+                        {siteMeta.locationTag}
+                    </p>
                 </div>
             </div>
         </section>
