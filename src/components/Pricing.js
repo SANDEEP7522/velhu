@@ -5,7 +5,7 @@ import { pricingPlans } from "@/cotents";
 export default function Pricing() {
     return (
         <section id="pricing" className="relative py-16 sm:py-20 md:py-24 lg:py-32">
-            <div className="max-w-[1700px] mx-auto px-2 sm:px-3 lg:px-4">
+            <div className="max-w-425 mx-auto px-2 sm:px-3 lg:px-4">
                 <SectionHeading
                     badge="Pricing Plans"
                     title="Transparent"
@@ -64,15 +64,16 @@ export default function Pricing() {
                                     ))}
                                 </ul>
 
-                                <a
-                                    href="#contact"
+                                <button
+                                    type="button"
+                                    data-lead-modal
                                     className={`w-full py-3 sm:py-3.5 rounded-xl text-center text-sm font-semibold transition-all duration-300 hover:scale-[1.02] min-h-11 inline-flex items-center justify-center ${plan.highlighted
                                         ? "bg-linear-to-r from-primary to-accent text-white hover:shadow-lg hover:shadow-primary/30"
                                         : "bg-slate-50 text-slate-900 border border-slate-200 hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
                                         }`}
                                 >
                                     {plan.cta}
-                                </a>
+                                </button>
                             </div>
                         </Reveal>
                     ))}

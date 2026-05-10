@@ -111,7 +111,7 @@ export default function Hero() {
                 />
             </div>
 
-            <div className="relative z-10 max-w-[1700px] mx-auto px-2 sm:px-3 lg:px-4">
+            <div className="relative z-10 max-w-425 mx-auto px-2 sm:px-3 lg:px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
                     {/* LEFT — Copy + CTAs + stats */}
                     <div>
@@ -163,13 +163,14 @@ export default function Hero() {
                                 Get Free Quote
                                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.4} />
                             </a>
-                            <a
-                                href="tel:+917522814847"
+                            <button
+                                type="button"
+                                data-lead-modal
                                 className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-white text-slate-900 text-sm font-semibold border border-slate-200 card-shadow hover:border-primary/40 hover:text-primary hover:-translate-y-0.5 transition-all duration-300 min-h-11"
                             >
                                 <Phone className="w-4 h-4 text-primary" strokeWidth={2.4} />
                                 Book Consultation
-                            </a>
+                            </button>
                             <a
                                 href="#work"
                                 className="group inline-flex items-center justify-center gap-1.5 px-2 py-3.5 text-sm font-semibold text-slate-600 hover:text-primary transition-colors duration-300"

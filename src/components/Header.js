@@ -22,7 +22,7 @@ export default function Header() {
                 : "bg-white/60 backdrop-blur-md border-b border-slate-200/60 py-2"
                 }`}
         >
-            <div className="max-w-[1700px] mx-auto px-2 sm:px-3 lg:px-4 flex items-center justify-between gap-3">
+            <div className="max-w-425 mx-auto px-2 sm:px-3 lg:px-4 flex items-center justify-between gap-3">
                 <Link
                     href="/"
                     className="flex items-center gap-0 group shrink-0 min-w-0 transition-transform duration-300 hover:scale-[1.03]"
@@ -63,12 +63,13 @@ export default function Header() {
                     ))}
                 </nav>
 
-                <a
-                    href="#contact"
+                <button
+                    type="button"
+                    data-lead-modal
                     className="hidden lg:inline-flex items-center gap-1.5 px-4 xl:px-5 py-2 text-sm font-semibold rounded-full bg-linear-to-r from-primary to-accent text-white hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-105 shrink-0"
                 >
                     Get Started &rarr;
-                </a>
+                </button>
 
                 <button
                     onClick={() => setIsOpen(!isOpen)}
@@ -104,13 +105,14 @@ export default function Header() {
                             {link.name}
                         </a>
                     ))}
-                    <a
-                        href="#contact"
+                    <button
+                        type="button"
+                        data-lead-modal
                         onClick={() => setIsOpen(false)}
                         className="mt-2 px-4 py-3 text-sm font-semibold text-center rounded-full bg-linear-to-r from-primary to-accent text-white"
                     >
                         Get Started
-                    </a>
+                    </button>
                 </nav>
             </div>
         </header>

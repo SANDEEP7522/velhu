@@ -1,7 +1,7 @@
 export default function CTA() {
     return (
         <section aria-label="Call to action" className="relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden">
-            <div className="max-w-[1700px] mx-auto px-2 sm:px-3 lg:px-4">
+            <div className="max-w-425 mx-auto px-2 sm:px-3 lg:px-4">
                 <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden">
                     {/* Background */}
                     <div className="absolute inset-0 bg-linear-to-br from-primary via-primary-dark to-accent" />
@@ -30,8 +30,9 @@ export default function CTA() {
                             achieve your goals. No commitment, just a friendly conversation.
                         </p>
                         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto">
-                            <a
-                                href="#contact"
+                            <button
+                                type="button"
+                                data-lead-modal
                                 className="group inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-white text-primary-dark font-semibold text-sm hover:bg-white/90 transition-all duration-300 hover:scale-105 hover:shadow-xl min-h-11"
                             >
                                 Start a Project
@@ -48,7 +49,7 @@ export default function CTA() {
                                         d="M17 8l4 4m0 0l-4 4m4-4H3"
                                     />
                                 </svg>
-                            </a>
+                            </button>
                             <a
                                 href="#work"
                                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full border border-white/30 text-white font-semibold text-sm hover:bg-white/10 transition-all duration-300 min-h-11"

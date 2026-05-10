@@ -17,21 +17,34 @@ const SERVICE_OPTIONS = [
     "Other",
 ];
 
+const EMPTY_FORM = { name: "", phone: "", service: "", message: "" };
+
 export default function LeadModal() {
     const [open, setOpen] = useState(false);
-    const [form, setForm] = useState({
-        name: "",
-        phone: "",
-        service: "",
-        message: "",
-    });
+    const [form, setForm] = useState(EMPTY_FORM);
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState({ type: "", text: "" });
 
     useEffect(() => {
         if (typeof window === "undefined") return;
-        if (sessionStorage.getItem(STORAGE_KEY) === "1") return;
 
-        const id = window.setTimeout(() => setOpen(true), OPEN_DELAY_MS);
-        return () => window.clearTimeout(id);
+        const onTriggerClick = (e) => {
+            const trigger = e.target.closest("[data-lead-modal]");
+            if (!trigger) return;
+            e.preventDefault();
+            setOpen(true);
+        };
+        document.addEventListener("click", onTriggerClick);
+
+        let timer;
+        if (sessionStorage.getItem(STORAGE_KEY) !== "1") {
+            timer = window.setTimeout(() => setOpen(true), OPEN_DELAY_MS);
+        }
+
+        return () => {
+            document.removeEventListener("click", onTriggerClick);
+            if (timer) window.clearTimeout(timer);
+        };
     }, []);
 
     useEffect(() => {
@@ -59,8 +72,9 @@ export default function LeadModal() {
         setForm({ ...form, [e.target.name]: e.target.value });
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
+
         const lines = [
             "Hi Velhu! I'd like to discuss a project.",
             "",
@@ -71,10 +85,71 @@ export default function LeadModal() {
         if (form.message) lines.push(`Details: ${form.message}`);
 
         const text = encodeURIComponent(lines.join("\n"));
-        const url = `https://wa.me/${siteMeta.phoneRaw.replace(/\D/g, "")}?text=${text}`;
+        const waUrl = `https://wa.me/${siteMeta.phoneRaw.replace(/\D/g, "")}?text=${text}`;
 
-        window.open(url, "_blank", "noopener,noreferrer");
-        close();
+        // Open WhatsApp synchronously inside the click handler so the popup
+        // isn't blocked. The email below runs in parallel.
+        window.open(waUrl, "_blank", "noopener,noreferrer");
+
+        setLoading(true);
+        setStatus({ type: "", text: "" });
+
+        const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+        if (!accessKey) {
+            setLoading(false);
+            setStatus({
+                type: "success",
+                text: "Opening WhatsApp — we'll reply shortly.",
+            });
+            setTimeout(close, 1500);
+            return;
+        }
+
+        const payload = {
+            access_key: accessKey,
+            subject: `New lead from ${form.name} — ${siteMeta.brand}`,
+            from_name: `${siteMeta.brand} Lead Modal`,
+            name: form.name,
+            phone: form.phone,
+            service: form.service,
+            message: form.message,
+            botcheck: "",
+        };
+
+        try {
+            const res = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify(payload),
+            }).then((r) => r.json());
+
+            if (res.success) {
+                setStatus({
+                    type: "success",
+                    text: "Thank you! We'll get back to you within 24 hours.",
+                });
+                setForm(EMPTY_FORM);
+                setTimeout(close, 1500);
+            } else {
+                setStatus({
+                    type: "danger",
+                    text:
+                        res.message ||
+                        "WhatsApp opened, but email failed. Please try again.",
+                });
+            }
+        } catch {
+            setStatus({
+                type: "danger",
+                text:
+                    "WhatsApp opened, but the email backup failed. Please send it manually.",
+            });
+        } finally {
+            setLoading(false);
+        }
     }
 
     return (
@@ -85,7 +160,7 @@ export default function LeadModal() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.25 }}
-                    className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+                    className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6"
                     aria-modal="true"
                     role="dialog"
                     aria-labelledby="lead-modal-title"
@@ -196,15 +271,32 @@ export default function LeadModal() {
 
                                 <button
                                     type="submit"
-                                    className="group w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-linear-to-r from-primary to-accent text-white font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 min-h-11"
+                                    disabled={loading}
+                                    className="group w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-linear-to-r from-primary to-accent text-white font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-lg min-h-11"
                                 >
-                                    Send on WhatsApp
-                                    <Send className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.4} />
+                                    {loading ? "Sending..." : "Send on WhatsApp"}
+                                    {!loading && (
+                                        <Send className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.4} />
+                                    )}
                                 </button>
 
-                                <p className="text-[11px] text-center text-slate-500">
-                                    By submitting, you agree to be contacted at the number above.
-                                </p>
+                                {status.text ? (
+                                    <p
+                                        role={status.type === "danger" ? "alert" : "status"}
+                                        aria-live="polite"
+                                        className={`text-[11px] text-center font-medium ${
+                                            status.type === "success"
+                                                ? "text-emerald-600"
+                                                : "text-rose-600"
+                                        }`}
+                                    >
+                                        {status.text}
+                                    </p>
+                                ) : (
+                                    <p className="text-[11px] text-center text-slate-500">
+                                        By submitting, you agree to be contacted at the number above.
+                                    </p>
+                                )}
                             </form>
                         </div>
                     </motion.div>

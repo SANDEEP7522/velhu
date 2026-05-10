@@ -84,7 +84,7 @@ export default function Contact() {
 
     return (
         <section id="contact" className="relative py-16 sm:py-20 md:py-24 lg:py-32">
-            <div className="max-w-[1700px] mx-auto px-2 sm:px-3 lg:px-4">
+            <div className="max-w-425 mx-auto px-2 sm:px-3 lg:px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16">
                     <div>
                         <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-medium bg-primary/10 text-primary-light border border-primary/20 mb-4 sm:mb-6">
