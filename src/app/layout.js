@@ -93,14 +93,6 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: siteMeta.logoIcon, type: "image/png" },
-    ],
-    shortcut: ["/favicon.ico"],
-    apple: [{ url: siteMeta.logoIcon }],
-  },
   manifest: "/manifest.webmanifest",
   formatDetection: {
     email: false,
