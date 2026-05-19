@@ -14,10 +14,14 @@ import thirteen from "./13.png";
 import fourteen from "./14.png";
 import fifteen from "./15.png";
 import uiUxDesign from "./Design.jpeg";
-import eCommerceDevelopment from "./E-CommerceDevelopment.jpg";
+import eCommerceDevelopment from "./E-commerceDevelopment.jpg";
 import seOptimization from "./SEOptimization.jpg";
 import webAppDevelopment from "./webappdevelopment.jpg";
-import websiteDevelopment from "./WebsiteDevelop.jpg";
+import websiteDevelopment from "./WebsiteDevelop.jpeg";
+import mobileApp from "./mobileApp.png";
+import androidApp from "./androidApp.png";
+import customServices from "./customServices.png";
+
 
 
 export {
@@ -41,4 +45,7 @@ export {
   seOptimization,
   webAppDevelopment,
   websiteDevelopment,
+  mobileApp,
+  androidApp,
+  customServices,
 };

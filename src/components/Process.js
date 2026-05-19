@@ -70,7 +70,7 @@ export default function Process() {
             id="process"
             className="relative py-16 sm:py-20 md:py-24 lg:py-32 bg-slate-50/60 overflow-hidden"
         >
-            <div className="max-w-[1700px] mx-auto px-2 sm:px-3 lg:px-4">
+            <div className="max-w-425 mx-auto px-2 sm:px-3 lg:px-4">
                 <SectionHeading
                     badge="Our Process"
                     title="How We"
