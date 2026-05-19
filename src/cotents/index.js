@@ -841,6 +841,7 @@ export const socials = [
 export const serviceList = [
   {
     slug: "website-development",
+    image: "/projectImg/WebsiteDevelop.jpeg",
     name: "Website Development",
     h1: "Website Development Company in Delhi",
     title:
@@ -880,6 +881,7 @@ export const serviceList = [
   },
   {
     slug: "ecommerce-website-development",
+    image: "/projectImg/E-commerceDevelopment.jpg",
     name: "Ecommerce Website Development",
     h1: "Ecommerce Website Developer in Delhi NCR",
     title:
@@ -919,6 +921,7 @@ export const serviceList = [
   },
   {
     slug: "mobile-app-development",
+    image: "/projectImg/mobileApp.png",
     name: "Mobile App Development",
     h1: "Mobile App Development Company in Delhi NCR",
     title:
@@ -958,6 +961,7 @@ export const serviceList = [
   },
   {
     slug: "android-app-development",
+    image: "/projectImg/androidApp.png",
     name: "Android App Development",
     h1: "Android App Development Company in Delhi",
     title:
@@ -996,6 +1000,7 @@ export const serviceList = [
   },
   {
     slug: "ios-app-development",
+    image: "/projectImg/mobileApp.png",
     name: "iOS App Development",
     h1: "iOS App Development Company in Delhi",
     title:
@@ -1034,6 +1039,7 @@ export const serviceList = [
   },
   {
     slug: "seo-services",
+    image: "/projectImg/SEOptimization.jpg",
     name: "SEO Services",
     h1: "SEO Services in Delhi NCR",
     title:
@@ -1073,6 +1079,7 @@ export const serviceList = [
   },
   {
     slug: "ui-ux-design",
+    image: "/projectImg/Design.jpeg",
     name: "UI/UX Design",
     h1: "UI/UX Design Services in Delhi NCR",
     title:
@@ -1112,6 +1119,7 @@ export const serviceList = [
   },
   {
     slug: "custom-software-development",
+    image: "/projectImg/customServices.png",
     name: "Custom Software Development",
     h1: "Custom Software Development Company in Delhi NCR",
     title:

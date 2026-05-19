@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import CTA from "@/components/CTA";
 import FAQ, { FaqJsonLd } from "@/components/FAQ";
@@ -94,18 +95,31 @@ export default function ServicesPage() {
                             <Link
                                 key={s.slug}
                                 href={`/services/${s.slug}`}
-                                className="group relative flex flex-col p-5 sm:p-6 md:p-7 rounded-2xl bg-white border border-slate-200 hover:border-primary/30 card-shadow hover:card-shadow-lg hover:-translate-y-1 transition-all duration-300"
+                                className="group relative flex flex-col rounded-2xl bg-white border border-slate-200 hover:border-primary/30 card-shadow hover:card-shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                             >
-                                <h2 className="text-base sm:text-lg md:text-xl font-bold text-slate-900 group-hover:text-primary transition-colors duration-300 text-pretty">
-                                    {s.name}
-                                </h2>
-                                <p className="mt-2 text-sm text-slate-600 leading-relaxed flex-1 line-clamp-4">
-                                    {s.tagline} {s.description.slice(0, 120)}…
-                                </p>
-                                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all duration-300">
-                                    Learn more
-                                    <ArrowRight className="w-4 h-4" strokeWidth={2.4} />
-                                </span>
+                                {s.image ? (
+                                    <div className="relative w-full aspect-16/10 bg-slate-50 overflow-hidden">
+                                        <Image
+                                            src={s.image}
+                                            alt={`${s.name} — illustration`}
+                                            fill
+                                            sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        />
+                                    </div>
+                                ) : null}
+                                <div className="p-5 sm:p-6 md:p-7 flex flex-col flex-1">
+                                    <h2 className="text-base sm:text-lg md:text-xl font-bold text-slate-900 group-hover:text-primary transition-colors duration-300 text-pretty">
+                                        {s.name}
+                                    </h2>
+                                    <p className="mt-2 text-sm text-slate-600 leading-relaxed flex-1 line-clamp-4">
+                                        {s.tagline} {s.description.slice(0, 120)}…
+                                    </p>
+                                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all duration-300">
+                                        Learn more
+                                        <ArrowRight className="w-4 h-4" strokeWidth={2.4} />
+                                    </span>
+                                </div>
                             </Link>
                         ))}
                     </div>

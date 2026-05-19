@@ -168,7 +168,7 @@ export default function TestimonialsFaq({ visibleFaqs = 6 }) {
                 Testimonials and Frequently Asked Questions
             </h2>
 
-            <div className="relative max-w-[1700px] mx-auto px-2 sm:px-3 lg:px-4">
+            <div className="relative max-w-425 mx-auto px-2 sm:px-3 lg:px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16">
                     <div className="min-w-0">
                         <ColumnHeading
