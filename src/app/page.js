@@ -4,20 +4,21 @@ import Pricing from "@/components/Pricing";
 import Portfolio from "@/components/Portfolio";
 import Process from "@/components/Process";
 import About from "@/components/About";
-import TechStack from "@/components/TechStack";
-import Testimonials from "@/components/Testimonials";
+import TestimonialsFaq from "@/components/TestimonialsFaq";
 import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
+import { FaqJsonLd } from "@/components/FAQ";
 import {
   siteMeta,
   services,
   pricingPlans,
   testimonials,
   projects,
+  seoFaqs,
 } from "@/cotents";
 
 export const metadata = {
-  title: "Modern Web Development Agency",
+  title: `Website & Mobile App Development Company in Delhi | ${siteMeta.brand}`,
   description: siteMeta.description,
   alternates: { canonical: "/" },
 };
@@ -143,14 +144,14 @@ export default function Home() {
   return (
     <>
       <HomeJsonLd />
+      <FaqJsonLd items={seoFaqs} />
       <Hero />
       <Services />
       <Pricing />
       <Portfolio />
       <About />
       <Process />
-      <TechStack />
-      <Testimonials />
+      <TestimonialsFaq />
       <CTA />
       <Contact />
     </>

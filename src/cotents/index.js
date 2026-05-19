@@ -208,9 +208,9 @@ export const siteMeta = {
   phoneHref: "tel:+917522814847",
   whatsappHref: "https://wa.me/917522814847",
   whatsappMessage: "Hi Velhu! I'd like to discuss a project.",
-  location: "IT Hub, Sector 62, Noida, Uttar Pradesh, India",
+  location: "IT Hub, Sector 62, Noida, Delhi NCR, India",
   locationTag:
-    "IT Hub, Sector 62, Noida, Uttar Pradesh, India — Serving clients worldwide",
+    "IT Hub, Sector 62, Noida, Delhi NCR — Serving Delhi, Gurgaon, Noida & clients worldwide",
   address: {
     street: "IT Hub, Sector 62",
     city: "Noida",
@@ -218,8 +218,18 @@ export const siteMeta = {
     country: "IN",
     postalCode: "201309",
   },
+  serviceArea: [
+    "Delhi",
+    "New Delhi",
+    "Noida",
+    "Gurgaon",
+    "Ghaziabad",
+    "Faridabad",
+    "Delhi NCR",
+    "India",
+  ],
   description:
-    "Velhu Global Tech Solutions builds high-performance, SEO-optimized websites, e-commerce stores, landing pages, and custom web portals at affordable prices with fast turnaround.",
+    "Velhu Global Tech Solutions is a leading website and mobile app development company in Delhi NCR. We build SEO-friendly, responsive websites, e-commerce stores, Android & iOS apps, and custom software for startups and businesses across Delhi, India and worldwide.",
   foundingDate: "2020-01-01",
   twitter: "@sahuji7522",
   logoIcon: "/projectImg/website_ligo.png",
@@ -270,11 +280,12 @@ export const heroFloatCards = [
 // ---------- Header navigation ----------------------------------------
 
 export const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Work", href: "#work" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Work", href: "/portfolio" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/contact" },
 ];
 
 // ---------- Services --------------------------------------------------
@@ -448,31 +459,52 @@ export const pricingPlans = [
 export const processSteps = [
   {
     step: "01",
-    title: "Discovery & Strategy",
+    title: "Requirement Gathering",
     description:
-      "We start by understanding your business, audience, and goals. Through in-depth research and analysis, we craft a tailored strategy that sets the foundation for success.",
-    icon: ProcessIcons.Discovery,
+      "We capture your goals, target audience, scope, and success metrics through detailed discovery sessions so we're solving the right problem from day one.",
+    iconKey: "clipboard",
   },
   {
     step: "02",
-    title: "Design & Prototype",
+    title: "Planning",
     description:
-      "Our designers create wireframes and high-fidelity prototypes that bring your vision to life. We iterate based on your feedback until the design is perfect.",
-    icon: ProcessIcons.Design,
+      "We translate requirements into a sprint-by-sprint roadmap with clear milestones, deliverables, and timelines so you always know what ships and when.",
+    iconKey: "calendar",
   },
   {
     step: "03",
-    title: "Development & Testing",
+    title: "Design",
     description:
-      "Our engineers build your product using modern technologies, writing clean, scalable code. Rigorous testing ensures everything works flawlessly.",
-    icon: ProcessIcons.Code,
+      "Wireframes, brand-aligned UI, and interactive Figma prototypes — refined with your feedback until every screen feels exactly right.",
+    iconKey: "palette",
   },
   {
     step: "04",
-    title: "Launch & Optimize",
+    title: "Development",
     description:
-      "We deploy your project with optimized performance and monitor key metrics. Continuous optimization ensures long-term growth and success.",
-    icon: ProcessIcons.Launch,
+      "Production-grade builds on modern stacks like Next.js, React, and React Native — clean, scalable, SEO-friendly code from the first commit.",
+    iconKey: "code",
+  },
+  {
+    step: "05",
+    title: "Testing",
+    description:
+      "Manual QA, automated tests, cross-browser and cross-device checks ensure every flow works flawlessly before your users ever see it.",
+    iconKey: "check",
+  },
+  {
+    step: "06",
+    title: "Deployment / Launch",
+    description:
+      "We deploy to your domain, configure analytics, SEO, and monitoring, then walk you through every part of your new platform on launch day.",
+    iconKey: "rocket",
+  },
+  {
+    step: "07",
+    title: "Maintenance & Updates",
+    description:
+      "Ongoing support, security patches, feature iterations, and performance tuning to keep your product fast, secure, and continuously improving.",
+    iconKey: "wrench",
   },
 ];
 
@@ -692,7 +724,7 @@ export const projects = [
     img: "/projectImg/15.png",
     description:
       "An institute website empowering minds through knowledge, innovation, and practical excellence. Features course exploration, admissions for the 2026 batch, student dashboard, program listings, and a clean modern UI.",
-    link: "https://www.sandeep-web.in/",
+    link: "https://hios.vercel.app/",
     techStack: ["Next.js", "React", "Tailwind CSS", "Node.js", "MongoDB"],
     freelance: true,
     color: "from-rose-500 to-pink-600",
@@ -759,22 +791,32 @@ export const projects = [
 
 export const footerLinks = {
   Services: [
-    { name: "Web Development", href: "#services" },
-    { name: "UI/UX Design", href: "#services" },
-    { name: "E-Commerce", href: "#services" },
-    { name: "SEO Optimization", href: "#services" },
+    { name: "Website Development", href: "/services/website-development" },
+    {
+      name: "Ecommerce Development",
+      href: "/services/ecommerce-website-development",
+    },
+    { name: "Mobile App Development", href: "/services/mobile-app-development" },
+    { name: "Android App Development", href: "/services/android-app-development" },
+    { name: "iOS App Development", href: "/services/ios-app-development" },
+    { name: "SEO Services", href: "/services/seo-services" },
+    { name: "UI/UX Design", href: "/services/ui-ux-design" },
+    {
+      name: "Custom Software",
+      href: "/services/custom-software-development",
+    },
   ],
   Company: [
-    { name: "About Us", href: "#about" },
-    { name: "Our Work", href: "#work" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Contact", href: "#contact" },
+    { name: "About Us", href: "/about" },
+    { name: "Our Work", href: "/portfolio" },
+    { name: "Testimonials", href: "/#testimonials" },
+    { name: "Contact", href: "/contact" },
   ],
   Resources: [
-    { name: "Blog", href: "#" },
-    { name: "Case Studies", href: "#work" },
-    { name: "FAQs", href: "#" },
-    { name: "Privacy Policy", href: "#" },
+    { name: "Blog", href: "/blog" },
+    { name: "Case Studies", href: "/portfolio" },
+    { name: "FAQs", href: "/#faq" },
+    { name: "Privacy Policy", href: "/" },
   ],
 };
 
@@ -790,4 +832,496 @@ export const socials = [
     icon: SocialIcons.LinkedIn,
   },
   { name: "Instagram", href: "#", icon: SocialIcons.Instagram },
+];
+
+// =====================================================================
+// SEO — Service catalog (one entry per dedicated /services/[slug] page)
+// =====================================================================
+
+export const serviceList = [
+  {
+    slug: "website-development",
+    name: "Website Development",
+    h1: "Website Development Company in Delhi",
+    title:
+      "Website Development Company in Delhi | Custom Website Development — Velhu",
+    description:
+      "Leading website development company in Delhi NCR. Custom, responsive, SEO-friendly website design and development for startups and businesses in Delhi, Noida, Gurgaon and across India.",
+    keywords: [
+      "website development company in delhi",
+      "web development services",
+      "custom website development",
+      "website designer in delhi",
+      "responsive website design",
+      "seo friendly website design",
+    ],
+    tagline: "Custom websites that rank, convert, and grow your business.",
+    benefits: [
+      "Mobile-first responsive design that looks great on every device",
+      "SEO-friendly structure with clean code and fast page speeds",
+      "Custom UI/UX tailored to your brand and business goals",
+      "Built on modern frameworks — Next.js, React, and Tailwind CSS",
+      "Secure hosting, SSL, and ongoing maintenance support",
+      "On-time delivery with transparent pricing",
+    ],
+    technologies: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Node.js",
+      "MongoDB",
+      "PostgreSQL",
+    ],
+    relatedServices: [
+      "ecommerce-website-development",
+      "ui-ux-design",
+      "seo-services",
+    ],
+  },
+  {
+    slug: "ecommerce-website-development",
+    name: "Ecommerce Website Development",
+    h1: "Ecommerce Website Developer in Delhi NCR",
+    title:
+      "Ecommerce Website Development in Delhi | Online Store Developer — Velhu",
+    description:
+      "Build a high-converting online store with Velhu — expert ecommerce website developer in Delhi. Custom Shopify, WooCommerce, and Next.js commerce solutions with payment gateway and SEO built in.",
+    keywords: [
+      "ecommerce website developer",
+      "ecommerce website development in delhi",
+      "online store development",
+      "shopify developer delhi",
+      "woocommerce developer",
+      "ecommerce seo",
+    ],
+    tagline: "Online stores that turn browsers into buyers.",
+    benefits: [
+      "Custom storefront design optimized for conversions",
+      "Razorpay, Stripe, PayU and Cashfree payment gateway integration",
+      "Inventory, order, and shipping management dashboards",
+      "Product SEO, schema markup, and clean URL structures",
+      "Mobile-optimized checkout with cart-recovery flows",
+      "GST invoicing and multi-currency support for India + global sales",
+    ],
+    technologies: [
+      "Next.js Commerce",
+      "Shopify",
+      "WooCommerce",
+      "Razorpay",
+      "Stripe",
+      "Sanity CMS",
+    ],
+    relatedServices: [
+      "website-development",
+      "seo-services",
+      "custom-software-development",
+    ],
+  },
+  {
+    slug: "mobile-app-development",
+    name: "Mobile App Development",
+    h1: "Mobile App Development Company in Delhi NCR",
+    title:
+      "Mobile App Development Company in Delhi | App Development Services India — Velhu",
+    description:
+      "Velhu is a top mobile app development company in Delhi NCR offering native and cross-platform app development services across India. iOS, Android, and React Native experts for startups and enterprises.",
+    keywords: [
+      "mobile app development company",
+      "app development services india",
+      "mobile app developer delhi",
+      "react native app development",
+      "flutter app developer",
+      "cross platform app development",
+    ],
+    tagline: "Native-quality mobile apps for iOS and Android, faster to market.",
+    benefits: [
+      "Single codebase for iOS + Android with React Native and Flutter",
+      "Native modules where performance matters",
+      "Push notifications, in-app payments, and analytics out of the box",
+      "App Store and Play Store submission handled end-to-end",
+      "Backend APIs, authentication, and real-time sync included",
+      "Post-launch support, crash monitoring, and version updates",
+    ],
+    technologies: [
+      "React Native",
+      "Flutter",
+      "Swift",
+      "Kotlin",
+      "Firebase",
+      "Node.js",
+    ],
+    relatedServices: [
+      "android-app-development",
+      "ios-app-development",
+      "custom-software-development",
+    ],
+  },
+  {
+    slug: "android-app-development",
+    name: "Android App Development",
+    h1: "Android App Development Company in Delhi",
+    title:
+      "Android App Development in Delhi | Kotlin & Java Android Developer — Velhu",
+    description:
+      "Custom Android app development services in Delhi NCR. Native Kotlin and Java Android apps built for performance, Play Store visibility, and scale by Velhu's experienced Android team.",
+    keywords: [
+      "android app development",
+      "android app developer delhi",
+      "kotlin app development",
+      "play store app development",
+      "native android app",
+    ],
+    tagline: "Native Android apps that perform on every device and Android version.",
+    benefits: [
+      "Native Kotlin development for smooth performance and small APK size",
+      "Material Design 3 UI tailored to your brand",
+      "Google Play Console setup, ASO, and Play Store publishing",
+      "In-app purchases, Google Play Billing, and subscription flows",
+      "Firebase integration for auth, push, crash reporting, and analytics",
+      "Compatibility tested across Android 8+ and a wide range of devices",
+    ],
+    technologies: [
+      "Kotlin",
+      "Java",
+      "Jetpack Compose",
+      "Firebase",
+      "Room",
+      "Retrofit",
+    ],
+    relatedServices: [
+      "ios-app-development",
+      "mobile-app-development",
+      "ui-ux-design",
+    ],
+  },
+  {
+    slug: "ios-app-development",
+    name: "iOS App Development",
+    h1: "iOS App Development Company in Delhi",
+    title:
+      "iOS App Development in Delhi | Swift & SwiftUI iPhone App Developer — Velhu",
+    description:
+      "Premium iOS app development services from Velhu in Delhi NCR. Swift and SwiftUI iPhone and iPad apps designed for App Store success, performance, and Apple's Human Interface Guidelines.",
+    keywords: [
+      "ios app development",
+      "iphone app developer delhi",
+      "swift app development",
+      "ipad app development",
+      "app store app development",
+    ],
+    tagline: "iPhone and iPad apps your users — and Apple — will love.",
+    benefits: [
+      "Modern Swift and SwiftUI codebase, ready for the latest iOS releases",
+      "Apple Human Interface Guidelines compliance for App Store approval",
+      "App Store Connect setup, TestFlight, and review submission",
+      "In-app purchases, Apple Pay, Sign in with Apple integrations",
+      "iPad, Apple Watch, and widget extensions on request",
+      "Performance tuned with Instruments and Xcode profiling",
+    ],
+    technologies: [
+      "Swift",
+      "SwiftUI",
+      "Combine",
+      "Core Data",
+      "CloudKit",
+      "Firebase",
+    ],
+    relatedServices: [
+      "android-app-development",
+      "mobile-app-development",
+      "ui-ux-design",
+    ],
+  },
+  {
+    slug: "seo-services",
+    name: "SEO Services",
+    h1: "SEO Services in Delhi NCR",
+    title:
+      "SEO Services in Delhi | SEO Friendly Website Design & Ranking Experts — Velhu",
+    description:
+      "Get found on Google. Velhu's SEO services in Delhi NCR cover on-page SEO, technical SEO, local SEO, and SEO-friendly website design that ranks for the keywords your buyers actually search.",
+    keywords: [
+      "seo services in delhi",
+      "seo friendly website design",
+      "local seo delhi",
+      "on page seo services",
+      "technical seo audit",
+      "google ranking services",
+    ],
+    tagline: "Rank higher on Google with SEO that actually moves the needle.",
+    benefits: [
+      "Technical SEO audit covering Core Web Vitals, indexing, and crawl issues",
+      "On-page optimization — titles, meta tags, headings, schema markup",
+      "Keyword research focused on Delhi NCR and pan-India search terms",
+      "Local SEO setup — Google Business Profile, NAP consistency, citations",
+      "Content strategy aligned to buyer intent and search volume",
+      "Monthly reporting on rankings, traffic, and conversions",
+    ],
+    technologies: [
+      "Google Search Console",
+      "Google Analytics 4",
+      "Ahrefs",
+      "Semrush",
+      "Screaming Frog",
+      "Schema.org",
+    ],
+    relatedServices: [
+      "website-development",
+      "ecommerce-website-development",
+      "ui-ux-design",
+    ],
+  },
+  {
+    slug: "ui-ux-design",
+    name: "UI/UX Design",
+    h1: "UI/UX Design Services in Delhi NCR",
+    title:
+      "UI/UX Design Services in Delhi | Product Design & Prototyping — Velhu",
+    description:
+      "Velhu's UI/UX design services in Delhi NCR turn complex products into clean, intuitive experiences. From wireframes to high-fidelity Figma designs and clickable prototypes for web and mobile apps.",
+    keywords: [
+      "ui ux design services",
+      "product design delhi",
+      "figma designer",
+      "mobile app ui design",
+      "website ui design",
+      "user experience design",
+    ],
+    tagline: "User experiences your customers won't want to leave.",
+    benefits: [
+      "User research, journey mapping, and information architecture",
+      "Wireframes, high-fidelity UI, and design systems in Figma",
+      "Interactive prototypes for stakeholder demos and user testing",
+      "Accessibility-first design (WCAG AA) for inclusive products",
+      "Responsive design for desktop, tablet, and mobile",
+      "Dev-ready handoff with assets, tokens, and component specs",
+    ],
+    technologies: [
+      "Figma",
+      "Framer",
+      "Adobe XD",
+      "Lottie",
+      "Maze",
+      "Hotjar",
+    ],
+    relatedServices: [
+      "website-development",
+      "mobile-app-development",
+      "ecommerce-website-development",
+    ],
+  },
+  {
+    slug: "custom-software-development",
+    name: "Custom Software Development",
+    h1: "Custom Software Development Company in Delhi NCR",
+    title:
+      "Custom Software Development in Delhi | SaaS & Web App Development — Velhu",
+    description:
+      "Velhu builds custom software, SaaS products, and web applications for businesses across Delhi NCR and India. Full-stack development, APIs, dashboards, and ERP/CRM systems tailored to your workflow.",
+    keywords: [
+      "custom software development",
+      "saas development company",
+      "full stack developer",
+      "web application development",
+      "erp software development",
+      "crm software development",
+    ],
+    tagline: "Software built around your workflow — not the other way around.",
+    benefits: [
+      "Discovery and product strategy to clarify scope before we build",
+      "Full-stack development with Node.js, Next.js, and Python backends",
+      "REST and GraphQL APIs, role-based auth, and audit logging",
+      "Custom dashboards, reporting, and admin tools",
+      "Cloud deployment on AWS, GCP, or Vercel with CI/CD pipelines",
+      "Ongoing maintenance, bug fixes, and feature iterations",
+    ],
+    technologies: [
+      "Next.js",
+      "Node.js",
+      "Python",
+      "PostgreSQL",
+      "AWS",
+      "Docker",
+    ],
+    relatedServices: [
+      "website-development",
+      "mobile-app-development",
+      "ui-ux-design",
+    ],
+  },
+];
+
+// =====================================================================
+// SEO — FAQs (used on the homepage + FAQPage schema markup)
+// =====================================================================
+
+export const seoFaqs = [
+  {
+    q: "Which is the best website development company in Delhi?",
+    a: "Velhu Global Tech Solutions is one of the top-rated website development companies in Delhi NCR. We have delivered 150+ projects across Delhi, Noida, Gurgaon, and pan-India — building responsive, SEO-friendly websites for startups, SMEs, and enterprises.",
+  },
+  {
+    q: "How much does a website cost in Delhi?",
+    a: "Website costs in Delhi typically range from ₹4,999 for a starter single-page site to ₹50,000+ for a full e-commerce or custom web application. Velhu offers transparent fixed-price plans starting at ₹4,999, with most business websites delivered between ₹9,999 and ₹14,999.",
+  },
+  {
+    q: "Do you build mobile apps for both Android and iOS?",
+    a: "Yes — Velhu builds native Android apps (Kotlin), native iOS apps (Swift/SwiftUI), and cross-platform apps using React Native and Flutter. We handle Play Store and App Store submission end-to-end.",
+  },
+  {
+    q: "Will my website be SEO-friendly and rank on Google?",
+    a: "Every Velhu website is built SEO-friendly from day one — clean semantic HTML, fast Core Web Vitals, mobile responsive, schema markup, optimized images, and proper meta tags. We also offer dedicated SEO services to help your site rank higher on Google.",
+  },
+  {
+    q: "How long does it take to build a website?",
+    a: "A starter website is typically delivered in 5–7 working days. A business website with custom design takes 2–3 weeks. E-commerce stores and custom web applications take 4–8 weeks depending on scope.",
+  },
+  {
+    q: "Do you work with clients outside Delhi NCR?",
+    a: "Absolutely. While we are based in Noida / Delhi NCR, we work remotely with clients across India and worldwide. All communication happens over WhatsApp, email, Google Meet, and shared Figma/Notion workspaces.",
+  },
+  {
+    q: "What technologies does Velhu use?",
+    a: "We build with modern, production-grade stacks — Next.js, React, Tailwind CSS, Node.js, Python, MongoDB, PostgreSQL for web; Kotlin, Swift, React Native, Flutter for mobile; and Razorpay/Stripe for payments. Our stack is chosen per project to balance speed, scalability, and cost.",
+  },
+  {
+    q: "Will I own the source code after the project is delivered?",
+    a: "Yes. You get full ownership of the source code, designs, and all assets after final payment. We hand over a clean GitHub repository, deployment access, and documentation.",
+  },
+  {
+    q: "Do you offer maintenance and support after launch?",
+    a: "Every plan includes free post-launch support — 1 month with the Starter plan, up to 12 months with the Enterprise plan. We also offer monthly retainer plans for ongoing updates, security patches, and feature additions.",
+  },
+  {
+    q: "How do I get a quote for my project?",
+    a: "Click 'Get Free Quote' anywhere on this site or message us on WhatsApp at +91 75228 14847. Share a brief description of what you need and we'll reply with a fixed quote and timeline within 24 hours.",
+  },
+];
+
+// =====================================================================
+// SEO — Blog topic suggestions (used to scaffold the /blog page)
+// =====================================================================
+
+export const blogTopics = [
+  {
+    slug: "how-to-choose-website-development-company-in-delhi",
+    title:
+      "How to Choose the Right Website Development Company in Delhi (2026 Guide)",
+    excerpt:
+      "Hiring a web development agency in Delhi? Here's the checklist — portfolio review, tech stack, SEO readiness, post-launch support, and red flags to avoid.",
+    category: "Website Development",
+    readTime: "8 min read",
+  },
+  {
+    slug: "ecommerce-website-cost-india",
+    title: "Ecommerce Website Cost in India: Full Breakdown for 2026",
+    excerpt:
+      "From ₹15,000 starter stores to enterprise commerce platforms — see what each price tier includes and how to budget your online store launch.",
+    category: "Ecommerce",
+    readTime: "10 min read",
+  },
+  {
+    slug: "seo-friendly-website-design-checklist",
+    title: "SEO-Friendly Website Design Checklist: 25 Things Google Loves",
+    excerpt:
+      "Core Web Vitals, mobile-first design, schema, internal linking, and 21 more — the on-page SEO checklist every new website should pass before launch.",
+    category: "SEO",
+    readTime: "12 min read",
+  },
+  {
+    slug: "react-native-vs-flutter-2026",
+    title: "React Native vs Flutter in 2026: Which Should You Pick?",
+    excerpt:
+      "Performance, developer ecosystem, hiring, and long-term cost — an honest comparison from a team that ships in both.",
+    category: "Mobile Apps",
+    readTime: "9 min read",
+  },
+  {
+    slug: "local-seo-for-delhi-businesses",
+    title: "Local SEO for Delhi Businesses: How to Rank in Maps & Search",
+    excerpt:
+      "Google Business Profile, NAP citations, local schema, and review strategies that move you to the top of 'near me' searches in Delhi NCR.",
+    category: "SEO",
+    readTime: "7 min read",
+  },
+  {
+    slug: "android-vs-ios-which-first",
+    title: "Android or iOS First? A Founder's Guide for Indian Startups",
+    excerpt:
+      "Indian market share, monetisation reality, App Store vs Play Store approval, and how to decide which platform to launch on first.",
+    category: "Mobile Apps",
+    readTime: "6 min read",
+  },
+  {
+    slug: "shopify-vs-woocommerce-vs-custom",
+    title: "Shopify vs WooCommerce vs Custom Build: Picking Your Ecommerce Stack",
+    excerpt:
+      "Subscription cost, design freedom, performance, scalability — when each option wins, and when it becomes a tax on your business.",
+    category: "Ecommerce",
+    readTime: "11 min read",
+  },
+  {
+    slug: "core-web-vitals-explained",
+    title: "Core Web Vitals Explained (and Why Your Site Is Failing Them)",
+    excerpt:
+      "LCP, INP, CLS — what they actually measure, what good scores look like, and the most common fixes we apply on real client sites.",
+    category: "SEO",
+    readTime: "8 min read",
+  },
+  {
+    slug: "ui-ux-mistakes-killing-conversions",
+    title: "10 UI/UX Mistakes That Are Quietly Killing Your Conversions",
+    excerpt:
+      "From slow CTAs to broken mobile flows — the recurring design mistakes we see on Indian SME websites, with before/after examples.",
+    category: "UI/UX Design",
+    readTime: "9 min read",
+  },
+  {
+    slug: "saas-mvp-in-30-days",
+    title: "How to Ship a SaaS MVP in 30 Days (Without Burning Investor Money)",
+    excerpt:
+      "Scope discipline, the right stack, and the build-measure-learn loop that lets founders validate a SaaS idea fast.",
+    category: "Digital Business",
+    readTime: "10 min read",
+  },
+  {
+    slug: "next-js-for-business-websites",
+    title: "Why We Build Business Websites on Next.js (Not WordPress)",
+    excerpt:
+      "Speed, security, SEO, and developer experience — the honest case for choosing Next.js over WordPress for new business websites in 2026.",
+    category: "Website Development",
+    readTime: "7 min read",
+  },
+  {
+    slug: "schema-markup-for-local-businesses",
+    title: "Schema Markup for Local Businesses: A Practical Walkthrough",
+    excerpt:
+      "LocalBusiness, Service, FAQPage, and Review schema — what to add, where to add it, and how to validate it for richer Google results.",
+    category: "SEO",
+    readTime: "8 min read",
+  },
+  {
+    slug: "checkout-conversion-optimization",
+    title: "Checkout Conversion Optimization: 14 Tweaks That Lift Sales",
+    excerpt:
+      "Form fields, payment options, mobile UX, abandonment recovery — the levers we pull to recover ecommerce revenue without spending more on ads.",
+    category: "Ecommerce",
+    readTime: "10 min read",
+  },
+  {
+    slug: "ai-tools-for-small-businesses-2026",
+    title: "AI Tools That Actually Help Small Businesses Grow in 2026",
+    excerpt:
+      "Beyond the hype — the AI tools we recommend to clients for content, customer support, analytics, and operations.",
+    category: "Digital Business",
+    readTime: "9 min read",
+  },
+  {
+    slug: "mobile-app-development-cost-india",
+    title: "Mobile App Development Cost in India: 2026 Pricing Guide",
+    excerpt:
+      "Native vs cross-platform, simple vs complex apps, in-house vs agency — realistic ranges so you can budget without nasty surprises.",
+    category: "Mobile Apps",
+    readTime: "10 min read",
+  },
 ];

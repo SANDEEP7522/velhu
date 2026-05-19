@@ -1,52 +1,63 @@
+import Image from "next/image";
 import {
-    Code2,
-    ShoppingCart,
-    Search,
-    Palette,
-    Layers,
     Rocket,
     Tag,
+    Palette,
     Smartphone,
+    Search,
     Headphones,
 } from "lucide-react";
 import Reveal from "./Reveal";
 import { services, serviceFeatures } from "@/cotents";
 
-const ICONS = {
-    code: Code2,
-    cart: ShoppingCart,
-    search: Search,
-    palette: Palette,
-    layers: Layers,
+const SERVICE_IMAGES = {
+    code: "/projectImg/WebsiteDevelop.jpeg",
+    cart: "/projectImg/E-commerceDevelopment.jpg",
+    search: "/projectImg/SEOptimization.jpg",
+    palette: "/projectImg/Design.jpeg",
+    layers: "/projectImg/webappdevelopment.jpg",
+};
+
+const FEATURE_ICONS = {
     rocket: Rocket,
     tag: Tag,
+    palette: Palette,
     smartphone: Smartphone,
+    search: Search,
     headphones: Headphones,
 };
 
 function ServiceCard({ service, idx }) {
-    const Icon = ICONS[service.iconKey] || Code2;
+    const img = SERVICE_IMAGES[service.iconKey];
     return (
         <Reveal delay={idx * 0.06} className="h-full">
-            <div className="group relative h-full p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 card-shadow hover:card-shadow-lg hover:border-primary/30 hover:-translate-y-1 transition-all duration-500">
-                <div
-                    className={`w-12 h-12 rounded-xl ${service.bg} ${service.fg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
-                >
-                    <Icon className="w-6 h-6" strokeWidth={2.2} />
+            <div className="group relative h-full flex flex-col rounded-2xl bg-white border border-slate-200 card-shadow hover:card-shadow-lg hover:border-primary/30 hover:-translate-y-1 transition-all duration-500 overflow-hidden">
+                {img ? (
+                    <div className={`relative w-full aspect-16/10 ${service.bg} overflow-hidden`}>
+                        <Image
+                            src={img}
+                            alt={`${service.title} — illustration`}
+                            fill
+                            sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                    </div>
+                ) : null}
+                <div className="p-5 sm:p-6 flex flex-col flex-1">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors duration-300">
+                        {service.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        {service.description}
+                    </p>
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors duration-300">
-                    {service.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {service.description}
-                </p>
             </div>
         </Reveal>
     );
 }
 
 function FeatureItem({ feature, idx }) {
-    const Icon = ICONS[feature.iconKey] || Rocket;
+    const Icon = FEATURE_ICONS[feature.iconKey] || Rocket;
     return (
         <Reveal delay={idx * 0.05}>
             <div className="flex items-center gap-3 px-2 py-2">
@@ -74,7 +85,7 @@ export default function Services() {
             id="services"
             className="relative py-12 sm:py-16 md:py-20 bg-white"
         >
-            <div className="max-w-[1700px] mx-auto px-2 sm:px-3 lg:px-4">
+            <div className="max-w-425 mx-auto px-2 sm:px-3 lg:px-4">
                 {/* Heading */}
                 <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">
                     <span className="block text-[11px] sm:text-xs font-bold tracking-[0.18em] uppercase text-primary mb-3">

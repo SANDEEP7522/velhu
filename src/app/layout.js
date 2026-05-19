@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
   preload: false,
 });
 
-const TITLE = `${siteMeta.legalName} | Affordable Web Development Agency in India`;
+const TITLE = `Website & Mobile App Development Company in Delhi | ${siteMeta.brand}`;
 const DESCRIPTION = siteMeta.description;
 
 export const metadata = {
@@ -37,20 +37,25 @@ export const metadata = {
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
   keywords: [
-    "web development agency",
-    "affordable website design",
-    "Next.js development",
-    "React development",
-    "e-commerce website",
-    "landing page design",
-    "school portal development",
-    "news portal development",
-    "UI UX design India",
-    "SEO optimized websites",
-    "Bangalore web agency",
-    "freelance web developer India",
+    "website development company in delhi",
+    "web development services",
+    "website designer in delhi",
+    "ecommerce website developer",
+    "mobile app development company",
+    "android app development",
+    "ios app development",
+    "seo friendly website design",
+    "responsive website design",
+    "seo services in delhi",
+    "full stack developer",
+    "custom website development",
+    "app development services india",
+    "ui ux design delhi",
+    "saas development company",
+    "next.js development",
+    "react native app development",
     "Velhu",
-    "Velhu Web Solutions",
+    "Velhu Global Tech Solutions",
   ],
   category: "technology",
   alternates: {
@@ -117,7 +122,7 @@ function OrganizationJsonLd() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
+        "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
         "@id": `${siteMeta.url}/#organization`,
         name: siteMeta.legalName,
         alternateName: siteMeta.brand,
@@ -128,8 +133,10 @@ function OrganizationJsonLd() {
           width: 1536,
           height: 1024,
         },
+        image: `${siteMeta.url}/opengraph-image`,
         email: siteMeta.email,
         telephone: siteMeta.phone,
+        priceRange: "₹₹",
         foundingDate: siteMeta.foundingDate,
         description: siteMeta.description,
         address: {
@@ -140,7 +147,9 @@ function OrganizationJsonLd() {
           postalCode: siteMeta.address.postalCode,
           addressCountry: siteMeta.address.country,
         },
-        areaServed: "Worldwide",
+        areaServed: (siteMeta.serviceArea || ["India", "Worldwide"]).map(
+          (a) => ({ "@type": "Place", name: a })
+        ),
         sameAs: [
           "https://x.com/sahuji7522",
           "https://www.linkedin.com/in/sandeep-kumar-sahu-ab9a73303/",
@@ -151,7 +160,7 @@ function OrganizationJsonLd() {
             email: siteMeta.email,
             telephone: siteMeta.phone,
             contactType: "customer support",
-            areaServed: "Worldwide",
+            areaServed: "IN",
             availableLanguage: ["English", "Hindi"],
           },
         ],

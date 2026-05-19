@@ -3,11 +3,18 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navLinks, siteMeta } from "@/cotents";
+
+function isActive(pathname, href) {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(href + "/");
+}
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -49,18 +56,22 @@ export default function Header() {
                 </Link>
 
                 <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
-                    {navLinks.map((link, i) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            className={`relative px-2.5 xl:px-3 py-1.5 text-sm font-medium transition-colors duration-300 rounded-md hover:bg-primary/5 ${i === 0
-                                ? "text-primary after:absolute after:-bottom-0.5 after:left-2.5 after:right-2.5 after:h-0.5 after:rounded-full after:bg-linear-to-r after:from-primary after:to-accent"
-                                : "text-slate-600 hover:text-primary"
-                                }`}
-                        >
-                            {link.name}
-                        </a>
-                    ))}
+                    {navLinks.map((link) => {
+                        const active = isActive(pathname, link.href);
+                        return (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                aria-current={active ? "page" : undefined}
+                                className={`relative px-2.5 xl:px-3 py-1.5 text-sm font-medium transition-colors duration-300 rounded-md hover:bg-primary/5 ${active
+                                    ? "text-primary after:absolute after:-bottom-0.5 after:left-2.5 after:right-2.5 after:h-0.5 after:rounded-full after:bg-linear-to-r after:from-primary after:to-accent"
+                                    : "text-slate-600 hover:text-primary"
+                                    }`}
+                            >
+                                {link.name}
+                            </Link>
+                        );
+                    })}
                 </nav>
 
                 <button
@@ -95,16 +106,23 @@ export default function Header() {
                 className={`lg:hidden overflow-hidden transition-all duration-500 ${isOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"}`}
             >
                 <nav className="glass mx-3 sm:mx-4 mt-3 rounded-2xl p-3 sm:p-4 flex flex-col gap-1 max-h-[75vh] overflow-y-auto" aria-label="Mobile">
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            onClick={() => setIsOpen(false)}
-                            className="px-4 py-3 text-sm font-medium text-slate-700 hover:text-primary hover:bg-primary/5 rounded-xl transition-all duration-300"
-                        >
-                            {link.name}
-                        </a>
-                    ))}
+                    {navLinks.map((link) => {
+                        const active = isActive(pathname, link.href);
+                        return (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                onClick={() => setIsOpen(false)}
+                                aria-current={active ? "page" : undefined}
+                                className={`px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 ${active
+                                    ? "text-primary bg-primary/5"
+                                    : "text-slate-700 hover:text-primary hover:bg-primary/5"
+                                    }`}
+                            >
+                                {link.name}
+                            </Link>
+                        );
+                    })}
                     <button
                         type="button"
                         data-lead-modal

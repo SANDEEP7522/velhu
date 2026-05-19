@@ -13,6 +13,12 @@ import twelve from "./12.png";
 import thirteen from "./13.png";
 import fourteen from "./14.png";
 import fifteen from "./15.png";
+import uiUxDesign from "./Design.jpeg";
+import eCommerceDevelopment from "./E-CommerceDevelopment.jpg";
+import seOptimization from "./SEOptimization.jpg";
+import webAppDevelopment from "./webappdevelopment.jpg";
+import websiteDevelopment from "./WebsiteDevelop.jpg";
+
 
 export {
   one,
@@ -30,4 +36,9 @@ export {
   thirteen,
   fourteen,
   fifteen,
+  uiUxDesign,
+  eCommerceDevelopment,
+  seOptimization,
+  webAppDevelopment,
+  websiteDevelopment,
 };
