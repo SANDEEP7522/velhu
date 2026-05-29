@@ -1,5 +1,15 @@
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Pin the Turbopack workspace root to this project so a stray lockfile in a
+  // parent directory (e.g. ~/package-lock.json) can't misdirect module resolution.
+  turbopack: {
+    root: __dirname,
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [

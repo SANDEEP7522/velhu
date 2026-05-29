@@ -13,14 +13,14 @@ import twelve from "./12.png";
 import thirteen from "./13.png";
 import fourteen from "./14.png";
 import fifteen from "./15.png";
-import uiUxDesign from "./Design.jpeg";
+import uiUxDesign from "./UiUxDesign.png";
 import eCommerceDevelopment from "./E-commerceDevelopment.jpg";
 import seOptimization from "./SEOptimization.jpg";
 import webAppDevelopment from "./webappdevelopment.jpg";
-import websiteDevelopment from "./WebsiteDevelop.jpeg";
+import websiteDevelopment from "./websiteDevelopment.png";
 import mobileApp from "./mobileApp.png";
-import androidApp from "./androidApp.png";
-import customServices from "./customServices.png";
+import androidApp from "./androidAppDevelopment.png";
+import customServices from "./customServices.webp";
 
 
 

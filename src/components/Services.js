@@ -11,10 +11,10 @@ import Reveal from "./Reveal";
 import { services, serviceFeatures } from "@/cotents";
 
 const SERVICE_IMAGES = {
-    code: "/projectImg/WebsiteDevelop.jpeg",
+    code: "/projectImg/websiteDevelopment.png",
     cart: "/projectImg/E-commerceDevelopment.jpg",
     search: "/projectImg/SEOptimization.jpg",
-    palette: "/projectImg/Design.jpeg",
+    palette: "/projectImg/UiUxDesign.png",
     layers: "/projectImg/webappdevelopment.jpg",
 };
 

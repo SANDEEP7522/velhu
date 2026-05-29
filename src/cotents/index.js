@@ -841,7 +841,7 @@ export const socials = [
 export const serviceList = [
   {
     slug: "website-development",
-    image: "/projectImg/WebsiteDevelop.jpeg",
+    image: "/projectImg/websiteDevelopment.png",
     name: "Website Development",
     h1: "Website Development Company in Delhi",
     title:
@@ -961,7 +961,7 @@ export const serviceList = [
   },
   {
     slug: "android-app-development",
-    image: "/projectImg/androidApp.png",
+    image: "/projectImg/androidAppDevelopment.png",
     name: "Android App Development",
     h1: "Android App Development Company in Delhi",
     title:
@@ -1079,7 +1079,7 @@ export const serviceList = [
   },
   {
     slug: "ui-ux-design",
-    image: "/projectImg/Design.jpeg",
+    image: "/projectImg/UiUxDesign.png",
     name: "UI/UX Design",
     h1: "UI/UX Design Services in Delhi NCR",
     title:
@@ -1119,7 +1119,7 @@ export const serviceList = [
   },
   {
     slug: "custom-software-development",
-    image: "/projectImg/customServices.png",
+    image: "/projectImg/customServices.webp",
     name: "Custom Software Development",
     h1: "Custom Software Development Company in Delhi NCR",
     title:
